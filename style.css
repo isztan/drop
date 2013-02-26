@@ -562,6 +562,7 @@ button, .btn {
     position: absolute;
     top: 100%;
     display: none;
+    visibility: hidden;
     float: left;
     min-width: 10em;
     margin-top: .470588235em;
@@ -591,6 +592,7 @@ button, .btn {
 /*  When a dropdown is active, display it. */
 .dropdown-menu-basic.active {
     display: block;
+    visibility: visible;
     padding: .470588235em;
 }
 
@@ -646,6 +648,7 @@ button, .btn {
 .dropdown-menu-jumbo {
     position: absolute;
     display: none;
+    visibility: hidden;
     float: left;
     right: 0;
     width: 100%;
@@ -664,6 +667,7 @@ button, .btn {
 /*  When a dropdown is active, display it. */
 .dropdown-menu-jumbo.active {
     display: block;
+    visibility: visible;
     padding-top: 1.529411765em;
     padding-bottom: 1.529411765em; 
 }
@@ -758,6 +762,7 @@ button, .btn {
  *  Only needed for expand-and-collapse option. */
 .nav-toggle {
     display: none;
+    visibility: hidden;
 }
 
 
@@ -782,6 +787,7 @@ button, .btn {
     /*  Display navigation toggle button if javascript is supported */
     .js .nav-toggle {
         display: block;
+        visibility: visible;
         float: right;
     }
 
