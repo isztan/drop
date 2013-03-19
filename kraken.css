@@ -838,7 +838,7 @@ select:focus {
 /*  Center all navigation elements */
 .nav-wrap {
     text-align: center;
-    margin-bottom: 34px;
+    margin-bottom: 2em;
 }
 
 /*  For text-based logo, override default link styling.
