@@ -72,7 +72,7 @@
 
 $(function () {
     // Close dropdown menus when you click outside of them    
-    $(document).click(function(){
+    $('body').on('click touchstart', function(){
       $('.dropdown > a').removeClass('active'); // Remove any '.active' classes from dropdown links
       $('.dropdown').removeClass('active'); // Remove any '.active' classes from dropdown list items
       $('.dropdown-menu').removeClass('active'); // Hide any visible dropdown menus
