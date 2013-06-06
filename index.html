@@ -42,227 +42,22 @@
 	        <p>Drop features two dropdown menu options:</p>
 
 	        <ol>
-	            <li>Basic, a simple, single-column menu.</li>
-	            <li>Jumbo, a full-screen, multi-column option.</li>
+	            <li><a href="basic.html">Basic</a>, a simple, single-column menu.</li>
+	            <li><a href="jumbo.html">Jumbo</a>, a full-screen, multi-column option.</li>
 	        </ol>
 
-	        <p>The JavaScript file is the same for both patterns. Pick the one that best fits your project.</p>
-
-
-	        <h2 class="text-center">Using Both Patterns</h2>
-
-	        <p>For simpicity, both dropdown menu options use the same naming conventions.</p>
-
-	        <p>If you will be using both options on a project, you'll need to change the class names to avoid conflicts. For example, you might rename <code>.dropdown-menu</code> to <code>.dropdown-menu-jumbo</code>.
-
-	        <p class="text-muted text-center">Keep reading to see examples...</p>
+	        <p>Both options require <code>drop.js</code>. Pick the one that best fits your project.</p>
 
 	        <hr>
 
 
-	        <h1 class="text-center">Drop Basic</h1>
+	        <h1 class="text-center">Using Both Patterns</h1>
 
-	        <p>A simple, single-column menu.</p>
+	        <p>For simpicity, both dropdown menu options use the same naming conventions.</p>
 
-            <nav class="nav-wrap">
-                <a class="logo" href="#">My Brand</a>
-                <a class="nav-toggle" href="#nav-menu">Menu &#9660;</a>
-                <div class="nav-collapse" id="nav-menu">
-                    <ul class="nav">
-                        <li><a href="#">Home</a></li>
-                        <li class="dropdown dropdown-basic">
-                            <a href="#">Dropdown 1</a>
-                            <div class="dropdown-menu dropdown-menu-basic">
-                                <ul>
-                                    <li><a href="#">Item 1</a></li>
-                                    <li><a href="#">Item 2</a></li>
-                                    <li><a href="#">Item 3</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="dropdown dropdown-basic">
-                            <a href="#">Dropdown 2</a>
-                            <div class="dropdown-menu dropdown-menu-basic dropdown-right">
-                                <ul>
-                                    <li><a href="#">Item 1</a></li>
-                                    <li><a href="#">Item 2</a></li>
-                                    <li><a href="#">Item 3</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+	        <p>If you will be using both options on a project, you'll need to change the class names to avoid conflicts. For example, you might change <code>.dropdown-menu</code> to <code>.dropdown-menu-basic</code> and <code>.dropdown-menu-jumbo</code>, respectively.
 
-            <pre>...
-    &lt;li class="dropdown"&gt;
-        &lt;a href="BACKUP-URL.com"&gt;Dropdown 1&lt;/a&gt;
-        &lt;div class="dropdown-menu dropdown-right"&gt;
-            &lt;ul&gt;
-            &lt;li&gt;&lt;a href="#"&gt;Item 1&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#"&gt;Item 2&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#"&gt;Item 3&lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class="dropdown"&gt;
-        &lt;a href="BACKUP-URL.com"&gt;Dropdown 2&lt;/a&gt;
-        &lt;div class="dropdown-menu dropdown-right"&gt;
-            &lt;ul&gt;
-            &lt;li&gt;&lt;a href="#"&gt;Item 1&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#"&gt;Item 2&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#"&gt;Item 3&lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-        &lt;/div&gt;
-    &lt;/li&gt;
-...</pre>
-
-
-            <h2 class="text-center">Text Clipping</h2>
-
-            <p>If a dropdown menu is close to the right edge, add the <code>.dropdown-right</code> class to avoid text clipping.</p>
-
-            <hr>
-
-
-            <h1 class="text-center">Drop Jumbo</h1>
-
-            <p>A full-screen, multi-column menu.</p>
-
-            <p>Drop Jumbo uses the <a href="http://cferdinandi.github.com/origami/">Origami grid system</a> for the column structure. If you already have a responsive grid you're using, feel free to swap it out.</p>
-
-            <nav class="nav-wrap">
-                <a class="logo" href="#">My Brand</a>
-                <a class="nav-toggle" href="#nav-menu-2">Menu &#9660;</a>
-                <div class="nav-collapse" id="nav-menu-2">
-                    <ul class="nav">
-                        <li><a href="#">Home</a></li>
-                        <li class="dropdown dropdown-jumbo">
-                            <a href="#">Dropdown 1</a>
-                            <div class="dropdown-menu dropdown-menu-jumbo">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="grid-3">
-                                            <strong>List 1</strong>
-                                            <ul>
-                                                <li><a href="#">Item 1</a></li>
-                                                <li><a href="#">Item 2</a></li>
-                                                <li><a href="#">Item 3</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="grid-3">
-                                            <strong>List 2</strong>
-                                            <ul>
-                                                <li><a href="#">Item 1</a></li>
-                                                <li><a href="#">Item 2</a></li>
-                                                <li><a href="#">Item 3</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="dropdown dropdown-jumbo">
-                            <a href="#">Dropdown 2</a>
-                            <div class="dropdown-menu dropdown-menu-jumbo">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="grid-2">
-                                            <strong>List 3</strong>
-                                            <ul>
-                                                <li><a href="#">Item 1</a></li>
-                                                <li><a href="#">Item 2</a></li>
-                                                <li><a href="#">Item 3</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="grid-2">
-                                            <strong>List 4</strong>
-                                            <ul>
-                                                <li><a href="#">Item 1</a></li>
-                                                <li><a href="#">Item 2</a></li>
-                                                <li><a href="#">Item 3</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="grid-2">
-                                            <strong>List 5</strong>
-                                            <ul>
-                                                <li><a href="#">Item 1</a></li>
-                                                <li><a href="#">Item 2</a></li>
-                                                <li><a href="#">Item 3</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-
-            <pre>...
-    &lt;li class="dropdown"&gt;
-        &lt;a href="#"&gt;Dropdown 1&lt;/a&gt;
-        &lt;div class="dropdown-menu"&gt;
-            &lt;div class="container"&gt;
-                &lt;div class="row"&gt;
-                    &lt;div class="grid-3"&gt;
-                        &lt;strong&gt;List 1&lt;/strong&gt;
-                        &lt;ul&gt;
-                            &lt;li&gt;&lt;a href="#"&gt;Item 1&lt;/a&gt;&lt;/li&gt;
-                            &lt;li&gt;&lt;a href="#"&gt;Item 2&lt;/a&gt;&lt;/li&gt;
-                            &lt;li&gt;&lt;a href="#"&gt;Item 3&lt;/a&gt;&lt;/li&gt;
-                        &lt;/ul&gt;
-                    &lt;/div&gt;
-                    &lt;div class="grid-3"&gt;
-                        &lt;strong&gt;List 2&lt;/strong&gt;
-                        &lt;ul&gt;
-                            &lt;li&gt;&lt;a href="#"&gt;Item 1&lt;/a&gt;&lt;/li&gt;
-                            &lt;li&gt;&lt;a href="#"&gt;Item 2&lt;/a&gt;&lt;/li&gt;
-                            &lt;li&gt;&lt;a href="#"&gt;Item 3&lt;/a&gt;&lt;/li&gt;
-                        &lt;/ul&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/li&gt;
-    &lt;li class="dropdown"&gt;
-        &lt;a href="#"&gt;Dropdown 2&lt;/a&gt;
-        &lt;div class="dropdown-menu"&gt;
-            &lt;div class="container"&gt;
-                &lt;div class="row"&gt;
-                    &lt;div class="grid-2"&gt;
-                        &lt;strong&gt;List 3&lt;/strong&gt;
-                        &lt;ul&gt;
-                            &lt;li&gt;&lt;a href="#"&gt;Item 1&lt;/a&gt;&lt;/li&gt;
-                            &lt;li&gt;&lt;a href="#"&gt;Item 2&lt;/a&gt;&lt;/li&gt;
-                            &lt;li&gt;&lt;a href="#"&gt;Item 3&lt;/a&gt;&lt;/li&gt;
-                        &lt;/ul&gt;
-                    &lt;/div&gt;
-                    &lt;div class="grid-2"&gt;
-                        &lt;strong&gt;List 4&lt;/strong&gt;
-                        &lt;ul&gt;
-                            &lt;li&gt;&lt;a href="#"&gt;Item 1&lt;/a&gt;&lt;/li&gt;
-                            &lt;li&gt;&lt;a href="#"&gt;Item 2&lt;/a&gt;&lt;/li&gt;
-                            &lt;li&gt;&lt;a href="#"&gt;Item 3&lt;/a&gt;&lt;/li&gt;
-                        &lt;/ul&gt;
-                    &lt;/div&gt;
-                    &lt;div class="grid-2"&gt;
-                        &lt;strong&gt;List 5&lt;/strong&gt;
-                        &lt;ul&gt;
-                            &lt;li&gt;&lt;a href="#"&gt;Item 1&lt;/a&gt;&lt;/li&gt;
-                            &lt;li&gt;&lt;a href="#"&gt;Item 2&lt;/a&gt;&lt;/li&gt;
-                            &lt;li&gt;&lt;a href="#"&gt;Item 3&lt;/a&gt;&lt;/li&gt;
-                        &lt;/ul&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/li&gt;
-...
-</pre>
-
-            <hr>
+	        <hr>
 
 
             <h1 class="text-center">Backup URLs</h1>
@@ -272,6 +67,11 @@
             <p>If a browser doesn't support JavaScript, the dropdown menu won't work. Specifying a backup URL ensures that people can always access your content, even on less capable browsers.</p>
 
             <p>When JavaScript is supported, Drop will prevent the backup URL from redirecting people away from the current page.</p>
+
+            <pre>&lt;li class="dropdown"&gt;
+    &lt;a href="backup-url.com"&gt;Dropdown&lt;/a&gt;
+    ...
+&lt;/li&gt;</pre>
 
             <hr>
 
@@ -289,16 +89,14 @@
 
             <h1 class="text-center">Progressively Enhanced</h1>
             
-            <p>Drop includes the <a href="http://cferdinandi.github.com/js-accessibility/">JS Accessibility snippet</a>, which adds a <code>.js</code> class to the <code>&lt;body&gt;</code> on page load.</p>
-
-            <p>The dropdown link carets won't appear until this script has loaded.</p>
+            <p>Drop includes a script that checks for JavaScript support by adding a <code>.js</code> class to the <code>&lt;body&gt;</code> on page load. This activates Drop and displays the dropdown link carets.</p>
 
             <hr>
 
 
-            <h1 class="text-center">Requires jQuery</h1>
+            <h1 class="text-center">Browser Support</h1>
             
-            <p>Drop requires <a href="http://jquery.com/">jQuery</a>.</p>
+            <p>Drop works in all modern browsers, and IE 8 and above. Drop also requires <a href="http://jquery.com/">jQuery</a>.</p>
 
         </article>
 	</section>
