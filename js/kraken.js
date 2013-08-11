@@ -1,138 +1,198 @@
 /* =============================================================
- * ios-orientation-change-fix.js v1.0.0
- * Fixes zoom on rotation bug in iOS.
- * Script by @scottjehl, rebound by @wilto
- * https://github.com/scottjehl/iOS-Orientationchange-Fix
- * MIT / GPLv2 License
+
+    Drop v2.0
+    Simple, mobile-friendly dropdown menus by Chris Ferdinandi.
+    http://gomakethings.com
+
+    Free to use under the MIT License.
+    http://gomakethings.com/mit/
+    
  * ============================================================= */
 
-(function(w){
-	
-	// This fix addresses an iOS bug, so return early if the UA claims it's something else.
-	var ua = navigator.userAgent;
-	if( !( /iPhone|iPad|iPod/.test( navigator.platform ) && /OS [1-5]_[0-9_]* like Mac OS X/i.test(ua) && ua.indexOf( "AppleWebKit" ) > -1 ) ){
-		return;
-	}
 
-    var doc = w.document;
+/* =============================================================
+    MICRO-FRAMEWORK
+    Simple vanilla JavaScript functions to handle common tasks.
+ * ============================================================= */
 
-    if( !doc.querySelector ){ return; }
+// Check if an element has a class
+var hasClass = function (elem, className) {
+    return new RegExp(' ' + className + ' ').test(' ' + elem.className + ' ');
+}
 
-    var meta = doc.querySelector( "meta[name=viewport]" ),
-        initialContent = meta && meta.getAttribute( "content" ),
-        disabledZoom = initialContent + ",maximum-scale=1",
-        enabledZoom = initialContent + ",maximum-scale=10",
-        enabled = true,
-		x, y, z, aig;
-
-    if( !meta ){ return; }
-
-    function restoreZoom(){
-        meta.setAttribute( "content", enabledZoom );
-        enabled = true;
+// Add a class to an element
+var addClass = function (elem, className) {
+    if (!hasClass(elem, className)) {
+        elem.className += ' ' + className;
     }
+}
 
-    function disableZoom(){
-        meta.setAttribute( "content", disabledZoom );
-        enabled = false;
-    }
-	
-    function checkTilt( e ){
-		aig = e.accelerationIncludingGravity;
-		x = Math.abs( aig.x );
-		y = Math.abs( aig.y );
-		z = Math.abs( aig.z );
-				
-		// If portrait orientation and in one of the danger zones
-        if( (!w.orientation || w.orientation === 180) && ( x > 7 || ( ( z > 6 && y < 8 || z < 8 && y > 6 ) && x > 5 ) ) ){
-			if( enabled ){
-				disableZoom();
-			}        	
+// Remove a class from an element
+var removeClass = function (elem, className) {
+    var newClass = ' ' + elem.className.replace( /[\t\r\n]/g, ' ') + ' ';
+    if (hasClass(elem, className)) {
+        while (newClass.indexOf(' ' + className + ' ') >= 0 ) {
+            newClass = newClass.replace(' ' + className + ' ', ' ');
         }
-		else if( !enabled ){
-			restoreZoom();
-        }
+        elem.className = newClass.replace(/^\s+|\s+$/g, '');
     }
-	
-	w.addEventListener( "orientationchange", restoreZoom, false );
-	w.addEventListener( "devicemotion", checkTilt, false );
+}
 
-})( this );
+// Toggle a class on an element
+var toggleClass = function (elem, className) {
+    if ( hasClass(elem, className) ) {
+        removeClass(elem, className);
+    }
+    else {
+        addClass(elem, className);
+    }
+}
+
+// Return sibling elements
+var getSiblings = function (elem) {
+    var siblings = [];
+    var sibling = elem.parentNode.firstChild;
+    var skipMe = elem;
+    for ( ; sibling; sibling = sibling.nextSibling ) 
+       if ( sibling.nodeType == 1 && sibling != elem )
+          siblings.push( sibling );        
+    return siblings;
+}
 
 
 
 
 
 /* =============================================================
- * drop.js v1.0.0
- * Simple, progressively enhanced dropdown menus.
- * Script by Chris Ferdinandi - http://gomakethings.com
- * Licensed under WTFPL - http://www.wtfpl.net
+    ASTRO FUNCTIONS
+    Toggle the navigation menu.
  * ============================================================= */
 
-$(function () {
-    // Close dropdown menus when you click outside of them    
-    $('body').click(function(){
-      $('.dropdown > a').removeClass('active'); // Remove any '.active' classes from dropdown links
-      $('.dropdown').removeClass('active'); // Remove any '.active' classes from dropdown list items
-      $('.dropdown-menu').removeClass('active'); // Hide any visible dropdown menus
+// Feature Test
+if ( 'querySelector' in document && 'addEventListener' in window ) {
+
+    // Define the dropdown toggle element, wrapper and content
+    var dropToggle = document.querySelectorAll('.dropdown > a');
+    var dropWrapper = document.querySelectorAll('.dropdown');
+    var dropContent = document.querySelectorAll('.dropdown-menu');
+
+
+    // When body is clicked, close all dropdowns
+    document.addEventListener('click', function(e) {
+
+        // For each dropdown toggle, remove '.active' class
+        [].forEach.call(dropToggle, function (toggle) {
+            removeClass(toggle, 'active');
+        });
+
+        // For each dropdown toggle, remove '.active' class
+        [].forEach.call(dropWrapper, function (wrapper) {
+            removeClass(wrapper, 'active');
+        });
+
+        // For each dropdown toggle, remove '.active' class
+        [].forEach.call(dropContent, function (content) {
+            removeClass(content, 'active');
+        });
+
+    }, false);
+
+
+    // For each toggle
+    [].forEach.call(dropToggle, function (toggle) {
+
+        // When the toggle is clicked
+        toggle.addEventListener('click', function(e) {
+
+            // Prevent the "close all dropdowns" function
+            e.stopPropagation();
+
+            // Prevent default link action
+            e.preventDefault();
+
+            // Define the dropdown menu content, parent element, and siblings
+            var toggleMenu = toggle.nextElementSibling;
+            var toggleParent = toggle.parentNode;
+            var toggleSiblings = getSiblings(toggleParent);
+
+            // Add/remove '.active' class from dropdown item
+            toggleClass(toggle, 'active');
+            toggleClass(toggleMenu, 'active');
+            toggleClass(toggleParent, 'active');
+
+            // Remove '.active' class from all sibling elements
+            [].forEach.call(toggleSiblings, function (sibling) {
+                var siblingContent = sibling.children;
+                removeClass(sibling, 'active');
+
+                // Remove '.active' class from all siblings child elements
+                [].forEach.call(siblingContent, function (content) {
+                    removeClass(content, 'active');
+                });
+
+            });
+
+        }, false);
     });
 
-    // When a dropdown menu link is clicked
-    $('.dropdown > a').click(function(e) {
-        e.stopPropagation(); // Stop the "close all dropdowns" function
-        e.preventDefault(); // Prevent the default link action
-        $(this).toggleClass('active').next($('.dropdown-menu')).toggleClass('active'); // If the dropdown menu is hidden, show it. Otherwise, hide it.
-        $(this).parent('.dropdown').toggleClass('active'); // Add/remove '.active' class to the dropdown list item
-        $(this).parent().siblings('.dropdown').removeClass('active').children('a').removeClass('active').next($('.dropdown-menu')).removeClass('active'); // Hide all other dropdown menus
+
+    // For each dropdown menu
+    [].forEach.call(dropContent, function (content) {
+
+        // When the menu is clicked
+        content.addEventListener('click', function(e) {
+
+            // Prevent the "close all dropdowns" function
+            e.stopPropagation();
+
+        }, false);
     });
 
-    // When click inside a dropdown menu
-    $('.dropdown-menu').click(function(e) {
-        e.stopPropagation(); // Stop the "close all dropdowns" function
-    });
-});
+}
 
 
 
 
 
 /* =============================================================
- * astro.js v1.0.0
- * Mobile-first navigation patterns.
- * Script by Chris Ferdinandi - http://gomakethings.com
- * Licensed under WTFPL - http://www.wtfpl.net/
+
+    Astro v3.0
+    Mobile-first navigation patterns by Chris Ferdinandi.
+    http://gomakethings.com
+
+    Free to use under the MIT License.
+    http://gomakethings.com/mit/
+    
  * ============================================================= */
-
-$(function () {
-    $('.nav-toggle').click(function(e) { // When a link or button with the .nav-toggle class is clicked
-        e.preventDefault(); // Prevent the default action from occurring
-
-        // Set Variables
-        var dataID = $(this).attr('data-target'); // dataID is the data-target value
-        var hrefID = $(this).attr('href'); // hrefID is the href value
-
-        // Toggle the Active Class
-        if (dataID)  { // If the clicked element has a data-target
-            $(dataID).toggleClass('active'); // Add or remove the .active class from the element whose ID matches the data-target value
-        }
-        else { // Otherwise
-            $(hrefID).toggleClass('active'); // Add or remove the .active class from the element whose ID matches the href value
-        }
-    });
-});
-
-
-
 
 
 /* =============================================================
- * js-accessibility.js v1.0.0
- * Adds .js class to <body> for progressive enhancement.
- * Script by Chris Ferdinandi - http://gomakethings.com
- * Licensed under WTFPL - http://www.wtfpl.net
+    ASTRO FUNCTIONS
+    Toggle the navigation menu.
  * ============================================================= */
 
-$(function () {
-    $('body').addClass('js'); // On page load, add the .js class to the <body> element.
-});
+// "Cut the Mustard" Feature Test
+if ( 'querySelector' in document && 'addEventListener' in window ) {
+
+    // Get all '.nav-toggle' elements
+    var navToggle = document.querySelectorAll('.nav-toggle');
+
+    // For each '.nav-toggle'
+    [].forEach.call(navToggle, function (toggle) {
+
+        // When '.nav-toggle' clicked
+        toggle.addEventListener('click', function(e) {
+
+            // Prevent the default action from occurring
+            e.preventDefault();
+
+            // Get target navigation menu
+            var dataID = this.dataset.target;
+            var dataTarget = document.querySelector(dataID);
+
+            // Toggle the '.active' class on the menu
+            toggleClass(dataTarget, 'active');
+            
+        }, false);
+    });
+}
