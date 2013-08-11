@@ -1,13 +1,42 @@
 # Drop
 Drop features two dropdown menu options, light on style so you can easily modify them to fit your design:
 
-1. Basic, a simple, single-column menu.
-2. Jumbo, a full-screen, multi-column option.
+1. [Basic](drop-basic.md), a simple, single-column menu.
+2. [Jumbo](drop-jumbo.md), a full-screen, multi-column option.
 
 Pick the one that best fits your project.
 
-## How It Works
-Getting started with Drop is really easy. [View the online tutorial](http://cferdinandi.github.com/drop/) or dig through the sample HTML files.
+
+## Using Both Patterns
+For simpicity, both dropdown menu options use the same naming conventions.
+
+If you will be using both options on a project, you'll need to change the class names to avoid conflicts. For example, you might change `.dropdown-menu` to `.dropdown-menu-basic` and `.dropdown-menu-jumbo`, respectively.
+
+
+## Backup URLs
+Always specify a functioning link as a backup for dropdown links.
+
+If a browser doesn't support JavaScript, the dropdown menu won't work. Specifying a backup URL ensures that people can always access your content, even on less capable browsers.
+
+When JavaScript is supported, Drop will prevent the backup URL from redirecting people away from the current page.
+
+    <li class="dropdown">
+        <a href="backup-url.com">Dropdown</a>
+        ...
+    </li>
+
+
+## Built for Astro
+Drop was built as a companion to [Astro](http://cferdinandi.github.com/astro/), a collection of mobile-first navigation patterns.
+
+Because it was developed with Astro in mind, it integrates really easily and takes advantage of Astro's built-in small screen collapse-and-expand menu styling.
+
+Drop should still work well with other navigation menus, too.
+
+
+## Progressively Enhanced
+Drop includes a script that checks for JavaScript support by adding a `.js` class to the `<body>` on page load. This activates Drop and displays the dropdown link carets.
+
 
 ## Changelog
 * v1.4 (August 5, 2013)
