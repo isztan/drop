@@ -64,7 +64,7 @@ var getSiblings = function (elem) {
 
 
 /* =============================================================
-    ASTRO FUNCTIONS
+    DROP FUNCTIONS
     Toggle the navigation menu.
  * ============================================================= */
 
@@ -187,7 +187,7 @@ if ( 'querySelector' in document && 'addEventListener' in window ) {
             e.preventDefault();
 
             // Get target navigation menu
-            var dataID = this.dataset.target;
+            var dataID = this.getAttribute('data-target');
             var dataTarget = document.querySelector(dataID);
 
             // Toggle the '.active' class on the menu
