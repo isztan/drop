@@ -3,9 +3,17 @@
 <head>
     <meta charset="utf-8" />
     <title>Drop - Simple Dropdown Menus</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <!-- stylesheets -->
-    <link rel="stylesheet" href="kraken.css" type="text/css" />
+    <link rel="stylesheet" href="kraken.css" type="text/css">
+
+    <!-- Feature Test -->
+    <script>
+        if ( 'querySelector' in document && 'addEventListener' in window ) {
+            document.documentElement.className += 'js';
+        }
+    </script>
 
     <!-- HTML5 Shim for IE 6-8 -->
     <!--[if lt IE 9]>
