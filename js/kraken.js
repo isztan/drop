@@ -69,7 +69,7 @@ var getSiblings = function (elem) {
  * ============================================================= */
 
 // Feature Test
-if ( 'querySelector' in document && 'addEventListener' in window ) {
+if ( 'querySelector' in document && 'addEventListener' in window && Array.prototype.forEach ) {
 
     // Function to toggle dropdowns
     var toggleDrop = function (toggle) {
@@ -180,20 +180,8 @@ if ( 'querySelector' in document && 'addEventListener' in window ) {
     
  * ============================================================= */
 
-
-/* =============================================================
-    MICRO-FRAMEWORK
-    Simple vanilla JavaScript functions to handle common tasks.
- * ============================================================= */
-
-
-/* =============================================================
-    ASTRO FUNCTIONS
-    Toggle the navigation menu.
- * ============================================================= */
-
 // Feature Test
-if ( 'querySelector' in document && 'addEventListener' in window ) {
+if ( 'querySelector' in document && 'addEventListener' in window && Array.prototype.forEach ) {
 
     // Function to toggle navigation menu
     var toggleNav = function (toggle) {
