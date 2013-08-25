@@ -115,8 +115,8 @@
 
             <h2>1. Include Drop on your site.</h2>
 
-            <pre>&lt;link rel="stylesheet" href="drop-jumbo.css"&gt;
-&lt;script src="drop.js"&gt;&lt;/script&gt;</pre>
+            <pre><code class="language-markup">&lt;link rel="stylesheet" href="drop-jumbo.css"&gt;
+&lt;script src="drop.js"&gt;&lt;/script&gt;</code></pre>
 
             <p>If you want multiple columns of content within your dropdown and don't already have a grid system, also include <code>kraken-grid.css</code>.</p>
 
@@ -125,7 +125,7 @@
 
             <p>This example uses the <a href="http://cferdinandi.github.io/kraken/">Kraken</a> grid system. Feel free to replace it with your own.</p>
 
-            <pre>...
+            <pre><code class="language-markup">...
     &lt;li class="dropdown"&gt;
         &lt;a href="#"&gt;Dropdown 1&lt;/a&gt;
         &lt;div class="dropdown-menu"&gt;
@@ -184,20 +184,19 @@
             &lt;/div&gt;
         &lt;/div&gt;
     &lt;/li&gt;
-...
-</pre>
+...</code></pre>
 
 
             <h2>3. Add a feature test.</h2>
 
             <p>Drop uses modern JavaScript API's that aren't supported by older browsers. Add this short snippet of code in the <code>&lt;head&gt;</code> of your HTML document to feature test:</p>
 
-            <pre>&lt;!-- Feature Test --&gt;
+            <pre><code class="language-markup">&lt;!-- Feature Test --&gt;
 &lt;script&gt;
     if ( 'querySelector' in document && 'addEventListener' in window && Array.prototype.forEach ) {
         document.documentElement.className += 'js';
     }
-&lt;/script&gt;</pre>
+&lt;/script&gt;</code></pre>
 
             <p>For browsers that support modern JavaScript API's, this snippet adds a <code>.js</code> class to the <code>&lt;html&gt;</code> element, which activates dropdown-specific styling elements. Older and less capable browsers get a basic link.</p>
 
